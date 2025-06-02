@@ -1,0 +1,28 @@
+package thread;
+
+class Counter{
+	private String threadName;
+	public Counter(String threadName) {
+		this.threadName=threadName;
+	}
+	public void threadCount() throws InterruptedException {
+		for(int i=0;i<5;i++) {
+			Thread.sleep(500);
+			System.out.println(threadName +" iteration no:"+i);
+		}
+	}
+}
+
+public class Counterthread {
+	public static void main(String[] args) throws InterruptedException {
+		Counter c1=new Counter("Thread1");
+		Counter c2=new Counter("Thread2");
+		long startTime=System.currentTimeMillis();
+		c1.threadCount();
+		System.out.println("****");
+		c2.threadCount();
+		long endTime=System.currentTimeMillis();
+		System.out.println("Total time required"+(endTime-startTime));
+	}
+
+}
