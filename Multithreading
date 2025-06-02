@@ -1,0 +1,47 @@
+package thread;
+
+class ThreadCounter extends Thread {
+    private String threadName;
+
+    public ThreadCounter(String threadName) {
+        this.threadName = threadName;
+    }
+
+    public void run() {
+        try {
+            for (int i = 0; i < 5; i++) {
+                Thread.sleep(500);
+                System.out.println(threadName + " and iteration no: " + i + " started");
+            }
+            System.out.println(threadName + " is exiting");
+        } catch (InterruptedException e) {
+            System.out.println(threadName + " was interrupted");
+        }
+    }
+}
+
+public class multithreading {
+    public static void main(String[] args) {
+        ThreadCounter tc1 = new ThreadCounter("Thread-1");
+        ThreadCounter tc2 = new ThreadCounter("Thread-2");
+        ThreadCounter tc3 = new ThreadCounter("Thread-3");
+
+        long startTime = System.currentTimeMillis();
+
+        tc1.start();
+        tc2.start();
+        tc3.start();
+
+        try {
+            tc1.join();
+            tc2.join();
+            tc3.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted");
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Total time taken: " + (endTime - startTime) + " ms");
+    }
+}
