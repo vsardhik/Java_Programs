@@ -1,0 +1,38 @@
+import java.awt.*;
+import javax.swing.*;
+
+class MyPanel extends JFrame {
+    public MyPanel() {
+        setTitle("My Panel");
+        setSize(300, 400);
+        setLocation(200, 100);
+        setLayout(null);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        JPanel panel1 = new JPanel();
+        panel1.setBounds(10, 50, 50, 50);
+        panel1.setBackground(Color.PINK);
+        add(panel1);
+
+        JPanel panel2 = new JPanel();
+        panel2.setBounds(70, 50, 50, 50);
+        panel2.setBackground(Color.RED);
+        add(panel2);
+
+        JPanel panel3 = new JPanel();
+        panel3.setBounds(130, 50, 50, 50);
+        panel3.setBackground(Color.BLACK);
+        add(panel3);
+
+        JPanel panel4 = new JPanel();
+        panel4.setBounds(190, 50, 50, 50);
+        panel4.setBackground(Color.BLUE);
+        add(panel4);
+    }
+
+    public static void main(String[] args) {
+        new MyPanel();
+    }
+}
