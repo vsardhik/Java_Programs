@@ -1,0 +1,81 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class Loginbutton extends JFrame implements ActionListener {
+    JLabel username, password, result;
+    JButton login, reset;
+    JTextField jt1;
+    JPasswordField jt2;
+
+    public Loginbutton() {
+        setTitle("Login Form");
+        setSize(400, 300);
+        setLocation(200, 100);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        // Username Label
+        username = new JLabel("Username:");
+        username.setBounds(50, 50, 100, 30);
+        add(username);
+
+        // Username Field
+        jt1 = new JTextField();
+        jt1.setBounds(150, 50, 150, 30);
+        add(jt1);
+
+        // Password Label
+        password = new JLabel("Password:");
+        password.setBounds(50, 100, 100, 30);
+        add(password);
+
+        // Password Field
+        jt2 = new JPasswordField();
+        jt2.setBounds(150, 100, 150, 30);
+        add(jt2);
+
+        // Login Button
+        login = new JButton("Login");
+        login.setBounds(50, 150, 100, 30);
+        add(login);
+
+        // Reset Button
+        reset = new JButton("Reset");
+        reset.setBounds(200, 150, 100, 30);
+        add(reset);
+
+        // Result Label
+        result = new JLabel("");
+        result.setBounds(50, 200, 300, 30);
+        add(result);
+
+        // Add Action Listeners
+        login.addActionListener(this);
+        reset.addActionListener(this);
+
+        // Set visible
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Loginbutton();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == login) {
+            String user = jt1.getText();
+            String pass = new String(jt2.getPassword());
+            if (user.equals("admin") && pass.equals("admin")) {
+                result.setText("Login Successful");
+            } else {
+                result.setText("Invalid Username or Password");
+            }
+        } else if (e.getSource() == reset) {
+            jt1.setText("");
+            jt2.setText("");
+            result.setText("");
+        }
+    }
+}
