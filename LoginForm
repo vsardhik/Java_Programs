@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -29,7 +30,17 @@ public class LoginForm extends JFrame{
         JPasswordField jt2=new JPasswordField();
         jt2.setBounds(150, 100, 150, 30);
         add(jt2);
+
+        //Adding JButton
+        JButton login = new JButton("Login");
+        login.setBounds(50, 150, 100, 30);
+        add(login);
+        //Adding reset button
+        JButton reset= new JButton("Reset");
+        reset.setBounds(200, 150, 100, 30);
+        add(reset);
         setVisible(true);
+
     }
     public static void main(String[] args) {
         new LoginForm();
